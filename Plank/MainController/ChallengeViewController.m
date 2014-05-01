@@ -112,6 +112,7 @@
 }
 
 - (IBAction)timerStart:(UIButton *)sender {
+    [NSUtil playSoundName:@"touch" type:@"m4a"];
     self.timeLabel.startValue = total;
     
     [self.timeLabel start];
@@ -123,7 +124,7 @@
 
 - (IBAction)timerEnd:(UIButton *)sender {
     
-    [NSUtil playSoundName:@"msgcome" type:@"wav"];
+    [NSUtil playSoundName:@"end" type:@"wav"];
     UIStoryboard *storyboard     = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
     ResultViewController *result = [storyboard instantiateViewControllerWithIdentifier:@"result"];
     UIImage *image               = [NSUtil screenShot:self.view size:CGSizeMake(DEVICE_WIDTH, 300)];

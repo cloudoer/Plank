@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Plank/MainController/TimingViewController.m"
-            timestampString = "419759252.063798"
+            timestampString = "419850319.076385"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "-timerEnd:"
             landmarkType = "5">
          </BreakpointContent>

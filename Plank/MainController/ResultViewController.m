@@ -70,7 +70,10 @@
     }
 
     self.totalTime.text = [NSUtil formatterSecond:_total showFrac:YES];
-    self.message.text   = [NSString stringWithFormat:@"哇喔,%llus神一般的存在", _total / 1000];
+    if (_total / 1000 < 30)
+        self.message.text   = [NSString stringWithFormat:@"坚持了%llus,再接再厉!!!", _total / 1000];
+     else
+        self.message.text   = [NSString stringWithFormat:@"哇喔,%llus神一般的存在!!!", _total / 1000];
 }
 
 - (IBAction)showOff:(UIButton *)sender {

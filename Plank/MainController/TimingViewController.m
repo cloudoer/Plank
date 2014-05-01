@@ -49,7 +49,7 @@ typedef NS_ENUM(NSInteger, kTTCounter){
     RMDownloadIndicator *closedIndicator = [[RMDownloadIndicator alloc]initWithFrame:self.timerCircle.frame type:kRMClosedIndicator];
     closedIndicator.backgroundColor = [UIColor clearColor];
     closedIndicator.fillColor = RGBCOLOR(135., 199., 86.);
-    closedIndicator.strokeColor = [UIColor greenColor];
+    closedIndicator.strokeColor = RGBCOLOR(135., 199., 86.);
     [self.view addSubview:closedIndicator];
     _timerCircle = closedIndicator;
     [self.timerCircle loadIndicator];
@@ -73,6 +73,7 @@ typedef NS_ENUM(NSInteger, kTTCounter){
 
 - (IBAction)timerStart:(UIButton *)sender {
     [self.timeLabel start];
+    [NSUtil playSoundName:@"touch" type:@"m4a"];
     self.startBtn.hidden = YES;
     self.stopBtn.hidden  = NO;
     
@@ -80,6 +81,7 @@ typedef NS_ENUM(NSInteger, kTTCounter){
 }
 
 - (IBAction)timerEnd:(UIButton *)sender {
+    [NSUtil playSoundName:@"end" type:@"wav"];
     unsigned long long total     = self.timeLabel.currentValue;
     UIStoryboard *storyboard     = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
     ResultViewController *result = [storyboard instantiateViewControllerWithIdentifier:@"result"];
@@ -89,7 +91,6 @@ typedef NS_ENUM(NSInteger, kTTCounter){
     result.total                 = total;
     NSString *key                = [NSUtil formatterDate:[NSDate date] formatter:@"yyyy.MM.dd"];
     
-    NSLog(@"====%@", NSUSERDEFAULTS(key));
     if (NSUSERDEFAULTS(key)) {
         if ([NSUSERDEFAULTS(key) unsignedLongLongValue] < total) {
             [NetFileUtil editorMaxGrade:total];
